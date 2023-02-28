@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:i_am_rich/magicball.dart';
 import 'package:i_am_rich/profile.dart';
+import 'package:i_am_rich/xylophone.dart';
 
 import 'dice.dart';
 
@@ -22,7 +24,12 @@ class NavDrawer extends StatelessWidget {
             leading: const Icon(Icons.input),
             title: const Text('Dice'),
             onTap: () => {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => const Dice(),)),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const Dice(),
+                ),
+              ),
             },
           ),
           ListTile(
@@ -34,13 +41,21 @@ class NavDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
+            title: const Text('Xylophone'),
+            onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const Xylophone())),
+            },
           ),
           ListTile(
             leading: const Icon(Icons.border_color),
-            title: const Text('Feedback'),
-            onTap: () => {Navigator.of(context).pop()},
+            title: const Text('MagicBall'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const MagicBall()),
+              ),
+            },
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app),

@@ -15,9 +15,15 @@ class _XylophoneState extends State<Xylophone> {
         title: const Text('Xylophone'),
       ),
       body: Column(
-        children: const [
-          Center(
-            child: Text('hello'),
+        children: [
+          TextButton(
+            onPressed: () async {
+              // final player = AudioPlayer();
+              // await player.play(
+              //   AssetSource("assets/audios/StarWars3.wav"),
+              // );
+            },
+            child: const Text('click Me'),
           ),
         ],
       ),
