@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:i_am_rich/magicball.dart';
 import 'package:i_am_rich/profile.dart';
+import 'package:i_am_rich/quizpage.dart';
 import 'package:i_am_rich/xylophone.dart';
 
 import 'dice.dart';
@@ -16,12 +17,12 @@ class NavDrawer extends StatelessWidget {
         children: <Widget>[
           const DrawerHeader(
             child: Text(
-              'Side menu',
+              'Flutter Development',
               style: TextStyle(color: Colors.black, fontSize: 25),
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.input),
+            leading: const Icon(Icons.roller_shades),
             title: const Text('Dice'),
             onTap: () => {
               Navigator.push(
@@ -40,20 +41,32 @@ class NavDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
+            leading: const Icon(Icons.surround_sound_outlined),
             title: const Text('Xylophone'),
             onTap: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => const Xylophone())),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const Xylophone()),
+              )
             },
           ),
           ListTile(
-            leading: const Icon(Icons.border_color),
+            leading: const Icon(Icons.sports_basketball),
             title: const Text('MagicBall'),
             onTap: () => {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const MagicBall()),
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.quiz),
+            title: const Text('Quiz Page'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const QuizPage()),
               ),
             },
           ),
