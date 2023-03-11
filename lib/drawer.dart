@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:i_am_rich/destini.dart';
 import 'package:i_am_rich/magicball.dart';
 import 'package:i_am_rich/profile.dart';
-import 'package:i_am_rich/quizpage.dart';
+import 'package:i_am_rich/Quiz/quizpage.dart';
 import 'package:i_am_rich/xylophone.dart';
 
 import 'dice.dart';
@@ -67,6 +68,16 @@ class NavDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const QuizPage()),
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.quiz),
+            title: const Text('Destini Page'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const Destini()),
               ),
             },
           ),

@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:i_am_rich/Quiz/Question.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);
@@ -11,21 +11,16 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
 
-  List<String> questions = [
-    'Do You Speak English?',
-    'The baby frog is known as',
-    'How many seconds make one hour?',
-    'Sometimes, a journalist may find it helpful to feign ignorance during an interview.',
-    'If reporters think of questions as a subject is telling story, they should politely stop the interview and ask the question before they forget it or the subject changes.',
-    'Reporters should conduct interviews in a neutral location, never in a sources home or office.',
-  ];
-  List<bool> answer = [
-    true,
-    false,
-    false,
-    true,
-    true,
-    false,
+  List<Question> questionBank = [
+    Question(q: 'Do You Speak English?', a: false),
+    Question(q: 'The baby frog is known as', a: true),
+    Question(q: 'How many seconds make one hour?', a: false),
+    Question(
+        q: 'Sometimes, a journalist may find it helpful to feign ignorance during an interview.',
+        a: false),
+    Question(
+        q: 'If reporters think of questions as a subject is telling story, they should politely stop the interview and ask the question before they forget it or the subject changes.',
+        a: false)
   ];
 
   int questionNumber = 0;
@@ -40,7 +35,7 @@ class _QuizPageState extends State<QuizPage> {
         children: [
           Center(
             child: Text(
-              questions[questionNumber],
+              questionBank[questionNumber].questionText,
             ),
           ),
           const SizedBox(
@@ -50,11 +45,11 @@ class _QuizPageState extends State<QuizPage> {
             width: 350,
             child: TextButton(
               onPressed: () {
-                bool correctAnswer = answer[questionNumber];
+                bool correctAnswer =
+                    questionBank[questionNumber].questionAnswer;
                 setState(() {
                   questionNumber++;
                 });
-                print(correctAnswer);
                 if (correctAnswer = true) {
                   scoreKeeper.add(
                     const Icon(
@@ -80,8 +75,8 @@ class _QuizPageState extends State<QuizPage> {
             width: 350,
             child: TextButton(
               onPressed: () {
-                bool correctAnswer = answer[questionNumber];
-                print(correctAnswer);
+                bool correctAnswer =
+                    questionBank[questionNumber].questionAnswer;
                 if (correctAnswer = false) {
                   scoreKeeper.add(
                     const Icon(
