@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i_am_rich/destini/story_brain.dart';
 
 class Destini extends StatefulWidget {
   const Destini({Key? key}) : super(key: key);
@@ -6,6 +7,9 @@ class Destini extends StatefulWidget {
   @override
   State<Destini> createState() => _DestiniState();
 }
+
+//TODO: Step 9 - Create a new storyBrain object from the StoryBrain class.
+StoryBrain storyBrain = StoryBrain();
 
 class _DestiniState extends State<Destini> {
   @override
@@ -24,10 +28,10 @@ class _DestiniState extends State<Destini> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Center(
+            Center(
               child: Text(
-                'Story text will go here',
-                style: TextStyle(color: Colors.white),
+                storyBrain.getStory(),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
             Column(
@@ -38,16 +42,28 @@ class _DestiniState extends State<Destini> {
                   child: ElevatedButton(
                     style:
                         ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    onPressed: () {},
-                    child: const Text('Choice 1'),
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(1);
+                      });
+                    },
+                    child: Text(
+                      storyBrain.getChoice1(),
+                    ),
                   ),
                 ),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     // style: ElevatedButton.styleFrom(textStyle: const TextStyle()) ,
-                    onPressed: () {},
-                    child: const Text('Choice 2'),
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(2);
+                      });
+                    },
+                    child: Text(
+                      storyBrain.getChoice2(),
+                    ),
                   ),
                 ),
               ],

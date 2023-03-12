@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:i_am_rich/destini.dart';
+import 'package:i_am_rich/destini/destini.dart';
 import 'package:i_am_rich/magicball.dart';
 import 'package:i_am_rich/profile.dart';
 import 'package:i_am_rich/Quiz/quizpage.dart';
