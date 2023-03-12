@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i_am_rich/BMI%20calculator/bmi_calculator.dart';
 import 'package:i_am_rich/destini/destini.dart';
 import 'package:i_am_rich/magicball.dart';
 import 'package:i_am_rich/profile.dart';
@@ -72,12 +73,22 @@ class NavDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.quiz),
+            leading: const Icon(Icons.description_sharp),
             title: const Text('Destini Page'),
             onTap: () => {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const Destini()),
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.calculate),
+            title: const Text('BMI Calculator'),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const BMICalculator()),
               ),
             },
           ),
