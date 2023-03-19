@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:i_am_rich/BMI%20calculator/components/bottom_button.dart';
 import 'package:i_am_rich/BMI%20calculator/constants.dart';
-import 'package:i_am_rich/BMI%20calculator/icon_content.dart';
-import 'package:i_am_rich/BMI%20calculator/resuablecard.dart';
+import 'package:i_am_rich/BMI%20calculator/components/icon_content.dart';
+import 'package:i_am_rich/BMI%20calculator/components/resuablecard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:i_am_rich/BMI%20calculator/screens/results_page.dart';
+import 'package:i_am_rich/BMI%20calculator/components/round_icon_button.dart';
 
 enum Gender {
   male,
@@ -27,7 +30,7 @@ class _BMICalculatorState extends State<BMICalculator> {
     return Scaffold(
       backgroundColor: const Color(0xFF1D1E26),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF1D1E26),
+        backgroundColor: kBackgroundColour,
         title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
@@ -37,18 +40,19 @@ class _BMICalculatorState extends State<BMICalculator> {
               children: [
                 Expanded(
                   child: CardView(
-                      pressed: () {
-                        setState(() {
-                          selectedGender = Gender.male;
-                        });
-                      },
-                      color: selectedGender == Gender.male
-                          ? activeCardColour
-                          : inactiveCardColour,
-                      cardChild: const IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: "Male",
-                      )),
+                    pressed: () {
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
+                    },
+                    color: selectedGender == Gender.male
+                        ? kActiveCardColour
+                        : inactiveCardColour,
+                    cardChild: const IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      label: "Male",
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: CardView(
@@ -58,7 +62,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                       });
                     },
                     color: selectedGender == Gender.female
-                        ? activeCardColour
+                        ? kActiveCardColour
                         : inactiveCardColour,
                     cardChild: const IconContent(
                       icon: FontAwesomeIcons.venus,
@@ -120,7 +124,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                 ],
               ),
               pressed: () {
-                print('hello');
+                debugPrint('hello');
               },
             ),
           ),
@@ -168,7 +172,7 @@ class _BMICalculatorState extends State<BMICalculator> {
                       ],
                     ),
                     pressed: () {
-                      print('hello');
+                      debugPrint('hello');
                     },
                   ),
                 ),
@@ -213,41 +217,26 @@ class _BMICalculatorState extends State<BMICalculator> {
                       ],
                     ),
                     pressed: () {
-                      print('hello');
+                      debugPrint('hello');
                     },
                   ),
                 ),
               ],
             ),
           ),
+          BottomButton(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ResultsPage(),
+                ),
+              );
+            },
+            buttonTitle: 'Calculator',
+          ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({
-    Key? key,
-    required this.icon,
-    required this.onPressed,
-  }) : super(key: key);
-
-  final IconData icon;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      shape: const CircleBorder(),
-      elevation: 0.0,
-      fillColor: const Color(0xFF4C4F5E),
-      constraints: const BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      onPressed: onPressed,
-      child: Icon(icon),
     );
   }
 }
