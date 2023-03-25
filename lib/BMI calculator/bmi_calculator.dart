@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:i_am_rich/BMI%20calculator/calculator_brain.dart';
 import 'package:i_am_rich/BMI%20calculator/components/bottom_button.dart';
 import 'package:i_am_rich/BMI%20calculator/constants.dart';
 import 'package:i_am_rich/BMI%20calculator/components/icon_content.dart';
@@ -226,10 +227,19 @@ class _BMICalculatorState extends State<BMICalculator> {
           ),
           BottomButton(
             onTap: () {
+              CalculatorBrain calc = CalculatorBrain(
+                height: height,
+                weight: weight,
+              );
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ResultsPage(),
+                  builder: (context) => ResultsPage(
+                    interpretation: calc.getInterpretation(),
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                  ),
                 ),
               );
             },
